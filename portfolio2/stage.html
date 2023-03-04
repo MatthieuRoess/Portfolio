@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="stage.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Stage</title>
+</head>
+    <body>
+        <nav>
+            <h2>Roess Matthieu</h2>
+            <ul>
+                <li>
+                    <a href="index.html"><i class="fa-solid fa-house"></i></a>
+                </li>
+                <li>
+                    <a href="skill.html"><i class="fa-solid fa-bars-progress"></i></a>
+                </li>
+                <li>
+                    <a href="stage.html"><i class="fa-solid fa-suitcase"></i></a>
+                </li>
+                <li>
+                    <a href="veille.html"><i class="fa-solid fa-magnifying-glass"></i></a>
+                </li>
+                <li>
+                    <a href="projet.html"><i class="fa-solid fa-code"></i></a>
+                </li>
+                <li>
+                    <a href="contact.html"><i class="fa-regular fa-address-card"></i></a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="stageDsi">
+            <h1>Stage DSI Colmar</h1>
+            <div class="container1">
+                <img src="img/pexels-negative-space-160107.jpg" alt="" class="stage1">
+                <img src="img/logo-onf.jpg" alt="" class="stage1">
+                <img src="img/man.png" alt="" class="stage1">
+                <img src="img/movieapi.jpg" alt="" class="stage1">
+            </div>
+            <!-- Bouton qui appele la fonction plusDivs avec un parametre -1/+1 -->
+            <div class="boutton">
+                <button class="bouttonMoins" onclick="additionner(-1,'stage1')"><i class="fa-solid fa-arrow-left"></i></button>
+                <button class="bouttonPlus" onclick="additionner(+1,'stage1')"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+            
+            
+        </div>
+
+        <div class="stageOnf">
+            <h1>Stage ONF</h1>
+            <div class="container1">
+                <img src="img/pexels-negative-space-160107.jpg" alt="" class="stage2">
+                <img src="img/logo-onf.jpg" alt="" class="stage2">
+                <img src="img/man.png" alt="" class="stage2">
+                <img src="img/movieapi.jpg" alt="" class="stage2">
+            </div>
+            <!-- Bouton qui appele la fonction plusDivs avec un parametre -1/+1 -->
+            <div class="boutton">
+                <button class="bouttonMoins" onclick="additionner(-1,'stage2')"><i class="fa-solid fa-arrow-left"></i></button>
+                <button class="bouttonPlus" onclick="additionner(+1,'stage2')"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </div>
+
+        <script>
+                //variable qui donne l'index de l'image à montrer
+                var slideIndex1 = 1;
+
+                var slideIndex2 = 1;
+
+                //appelle de afficherImage avec 1 pour montrer la 1er image
+                afficherImage(slideIndex1);
+
+                afficherImage(slideIndex2);
+
+                //additionne ou soustrait 1 et appelle afficherImage
+                function additionner(n,test) {
+                    if(test == "stage1"){
+                        afficherImage(slideIndex1 += n,test);
+                    }
+                    else{
+                        afficherImage(slideIndex2 += n,test);
+                    }
+                    
+                }
+
+                function afficherImage(n,test) {
+                var i;
+
+                if(test == "stage1"){
+                     //on recupere toute les images
+                    var x = document.getElementsByClassName(test);
+                    //si c'est la dernière image + 1 retour à la première
+                    if (n > x.length) {
+                        slideIndex1 = 1
+                    }
+                    //si c'est la premiere image - 1 -> dernière image
+                    if (n < 1) {
+                        slideIndex1 = x.length
+                    } 
+                    //on affiche aucune image
+                    for (i = 0; i < x.length; i++) {
+                        x[i].style.display = "none";
+                    }
+                    //on affiche l'image avec le bon index -1 car tableau 
+                    x[slideIndex1-1].style.display = "block";
+                }
+                else{
+                     //on recupere toute les images
+                    var y = document.getElementsByClassName(test);
+                    //si c'est la dernière image + 1 retour à la première
+                    if (n > y.length) {
+                        slideIndex2 = 1
+                    }
+                    //si c'est la premiere image - 1 -> dernière image
+                    if (n < 1) {
+                        slideIndex2 = y.length
+                    } 
+                    //on affiche aucune image
+                    for (i = 0; i < y.length; i++) {
+                        y[i].style.display = "none";
+                    }
+                    //on affiche l'image avec le bon index -1 car tableau 
+                    y[slideIndex2-1].style.display = "block";
+                }
+                
+                }
+
+
+        </script>
+    </body>
+</html>
